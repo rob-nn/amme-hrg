@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'amme-hrg';
+
+  opened: boolean;
+
+  toggleSidenav() {
+    this.opened = !this.opened;
+  }
 }
