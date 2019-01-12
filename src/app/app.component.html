@@ -1,0 +1,14 @@
+<mat-toolbar>
+  <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+  <span style="padding:10px">AMME-HRG</span>
+</mat-toolbar>
+<mat-sidenav-container style="height: 100%;">
+  <mat-sidenav #sidenav style="width:25%" mode="side">
+    <mat-list>
+      <mat-list-item><a routerLink="/acolhimentoPaciente" (click)="sidenav.toggle()">Acolhimento do Paciente</a></mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
