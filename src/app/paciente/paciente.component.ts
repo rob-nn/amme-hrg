@@ -13,7 +13,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class PacienteComponent implements OnInit {
 
-  formPaciente: FormGroup;
+  pacienteFormGroup: FormGroup;
 
   paciente: Paciente = new Paciente(); 
   inclusao: boolean;
@@ -21,18 +21,37 @@ export class PacienteComponent implements OnInit {
   constructor(
     private route : ActivatedRoute,
     private pacienteService: PacienteService,
-    fb: FormBuilder) { 
-      this.formPaciente = fb.group({
+    private fb: FormBuilder) { 
+      this.pacienteFormGroup = this.fb.group({
+        id: [''],
+        ses: [''],
+        nome: [''],
+        sexo: [''],
+        dataNascimento: [''],
+        estadoCivil: [''],
+        nacionalidade: [''],
+        endereco: [''],
+        telefoneCelularPessoal: [''],
+        telefoneCelularContato: [''],
+        telefoneFixo: [''],
+        profissao: [''],
+        nomePai: [''],
+        nomeMae: [''],
+        orfao: [''],
+        timestamp: [''],
+        numeroPassagem: [''],
       })
     }
 
   ngOnInit() {
-    debugger
     let id: any = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.inclusao = false;
       this.pacienteService.getPaciente(+id).subscribe(
-        paciente => this.paciente = paciente
+        paciente => { 
+          this.paciente = paciente
+          this.pacienteFormGroup.setValue(paciente);
+        }
       )
     }
     else {

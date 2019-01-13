@@ -2,14 +2,14 @@
   <span  style="text-align: center; width: 100%;">Acolhimento de Paciente - Dados Demográficos {{ acao }}</span>
 </mat-toolbar>
 
-<form [formGroup]="formPaciente">
+<form [formGroup]="pacienteFormGroup">
   <mat-form-field>
-    <input [(value)]="paciente.ses" matInput type="number" required maxlength="10" 
+    <input formControlName="ses" matInput type="number" required maxlength="10" 
       placeholder="SES">
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input [(value)]="paciente.nome" matInput type="text" required maxlength="255" placeholder="Nome">
+    <input formControlName="nome" matInput type="text" required maxlength="255" placeholder="Nome">
   </mat-form-field>
   <div style="padding-bottom: 10px">
     <label>Sexo </label>
