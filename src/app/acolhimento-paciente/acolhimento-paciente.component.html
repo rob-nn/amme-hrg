@@ -3,7 +3,7 @@
 </mat-toolbar>
 <div style="text-align: center; width: 100%; padding-top: 20px">
   <mat-form-field>
-    <input matInput placeholder="Informe o SES">
+    <input #ses matInput type="number" placeholder="Informe o SES">
   </mat-form-field>
-  <button mat-button><mat-icon>search</mat-icon></button>
+  <button mat-button (click)=procurar(ses.value)><mat-icon>search</mat-icon></button>
 </div>

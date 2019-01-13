@@ -1,0 +1,85 @@
+<mat-toolbar>
+  <span  style="text-align: center; width: 100%;">Acolhimento de Paciente - Dados Demográficos {{ acao }}</span>
+</mat-toolbar>
+
+<form [formGroup]="formPaciente">
+  <mat-form-field>
+    <input [(value)]="paciente.ses" matInput type="number" required maxlength="10" 
+      placeholder="SES">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input [(value)]="paciente.nome" matInput type="text" required maxlength="255" placeholder="Nome">
+  </mat-form-field>
+  <div style="padding-bottom: 10px">
+    <label>Sexo </label>
+    <mat-radio-group [(value)]="paciente.sexo">
+      <mat-radio-button value="f" style="padding-left: 10px">Feminino</mat-radio-button>
+      <mat-radio-button value="m" style="padding-left: 10px">Masculino</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <mat-form-field>
+    <input matInput [matDatepicker]="dataNascimentoPicker" required placeholder="Data de Nascimento" [(value)]="paciente.dataNascimento">
+    <mat-datepicker-toggle matSuffix [for]="dataNascimentoPicker"></mat-datepicker-toggle>
+    <mat-datepicker #dataNascimentoPicker ></mat-datepicker>
+  </mat-form-field>
+  <div style="padding-bottom: 10px">
+    <label>Estado Civil </label>
+    <mat-radio-group [(value)]="paciente.estadoCivil">
+      <mat-radio-button value="0" style="padding-left: 10px">Casado</mat-radio-button>
+      <mat-radio-button value="1" style="padding-left: 10px">Divorciado</mat-radio-button>
+      <mat-radio-button value="2" style="padding-left: 10px">Separado</mat-radio-button>
+      <mat-radio-button value="3" style="padding-left: 10px">Solteiro</mat-radio-button>
+      <mat-radio-button value="4" style="padding-left: 10px">UniaoEstavel</mat-radio-button>
+      <mat-radio-button value="5" style="padding-left: 10px">Viuvo</mat-radio-button>
+    </mat-radio-group>
+  </div>
+   <div style="padding-bottom: 10px">
+    <label>Nacionalidade </label>
+    <mat-radio-group [(value)]="paciente.nacionalidade">
+      <mat-radio-button value="0" style="padding-left: 10px">Brasileira</mat-radio-button>
+      <mat-radio-button value="1" style="padding-left: 10px">Estrangeira</mat-radio-button>
+      <mat-radio-button value="2" style="padding-left: 10px">Naturalizado</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <mat-form-field>
+    <input [(value)]="paciente.endereco" required matInput type="text" maxlength="500" placeholder="Nome">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input [(value)]="paciente.telefoneCelularPessoal" matInput type="tel" maxlength="13" placeholder="Telefone Celular Pessoal" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input [(value)]="paciente.telefoneCelularContato" matInput type="tel" maxlength="13" placeholder="Telefone Celular Contato" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input [(value)]="paciente.telefoneFixo" matInput type="tel" maxlength="13" placeholder="Telefone Fixo" >
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input [(value)]="paciente.profissao" required matInput type="text" maxlength="250" placeholder="Profissão">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input [(value)]="paciente.nomePai" required matInput type="text" maxlength="250" placeholder="Nome Pai">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input [(value)]="paciente.nomeMae" required matInput type="text" maxlength="250" placeholder="Nome Mãe">
+  </mat-form-field>
+  <br>
+  <mat-checkbox [(value)]="paciente.orfao">Órfão</mat-checkbox>
+  <br>
+  <mat-form-field>
+    <input matInput type="datetime" placeholder="Data Última Atualização" readonly [(value)]="paciente.timestamp">
+    <mat-datepicker #timestampPicker ></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input [(value)]="paciente.numeroPassagem" readonly matInput type="number" maxlength="20" placeholder="numeroPassagem">
+  </mat-form-field>
+  <br>
+  <button mat-button (click)="salvar()"><mat-icon style="font-size: 50px">save</mat-icon></button>
+</form>

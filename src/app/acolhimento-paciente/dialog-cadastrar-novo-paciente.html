@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>SES não encontrado na base de dados</h1>
+<div mat-dialog-content>
+  <p>Deseja cadastrar um novo paciente?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Não</button>
+  <button mat-button [mat-dialog-close]="data.cadastrarNovo" (click)="onYesClick()" cdkFocusInitial>Sim</button>
+</div>
