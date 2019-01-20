@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { PacienteService } from '../paciente.service';
 import { Paciente } from '../entity/paciente';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -24,22 +24,21 @@ export class PacienteComponent implements OnInit {
     private fb: FormBuilder) { 
       this.pacienteFormGroup = this.fb.group({
         id: [''],
-        ses: [''],
-        nome: [''],
-        sexo: [''],
-        dataNascimento: [''],
-        estadoCivil: [''],
-        nacionalidade: [''],
-        endereco: [''],
-        telefoneCelularPessoal: [''],
-        telefoneCelularContato: [''],
-        telefoneFixo: [''],
-        profissao: [''],
+        ses: ['', [Validators.required, Validators.max(999999999999)]],
+        nome: ['', [Validators.required, Validators.maxLength(255)]],
+        sexo: ['', [Validators.required]],
+        dataNascimento: ['', [Validators.required]],
+        estadoCivil: ['', [Validators.required]],
+        nacionalidade: ['', [Validators.required]],
+        endereco: ['', [Validators.required]],
+        telefoneCelularPessoal: ['', [Validators.required]],
+        telefoneCelularContato: ['', [Validators.required]],
+        telefoneFixo: ['', [Validators.required]],
+        profissao: ['', [Validators.required]],
         nomePai: [''],
         nomeMae: [''],
         orfao: [''],
-        timestamp: [''],
-        numeroPassagem: [''],
+        timestamp: ['']
       })
     }
 
@@ -67,7 +66,7 @@ export class PacienteComponent implements OnInit {
     if (this.inclusao) {
       this.pacienteService.addPaciente(this.paciente).subscribe(
         paciente => {
-          alert(`Pacieente SES ${paciente.ses} adicionado. Novo número de passage ${paciente.numeroPassagem}`);
+          alert(`Pacieente SES ${paciente.ses} adicionado.`);
         }
       )
     } else {

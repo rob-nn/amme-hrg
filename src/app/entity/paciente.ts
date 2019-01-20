@@ -33,5 +33,4 @@ export class Paciente {
     nomeMae: String;
     orfao: boolean;
     timestamp: Date;
-    numeroPassagem: number;
 }

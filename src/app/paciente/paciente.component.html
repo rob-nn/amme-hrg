@@ -1,19 +1,18 @@
 <mat-toolbar>
   <span  style="text-align: center; width: 100%;">Acolhimento de Paciente - Dados Demográficos {{ acao }}</span>
 </mat-toolbar>
-
+<h1>Valid: {{pacienteFormGroup.valid}}</h1>
 <form [formGroup]="pacienteFormGroup">
   <mat-form-field>
-    <input formControlName="ses" matInput type="number" required maxlength="10" 
-      placeholder="SES">
+    <input formControlName="ses" matInput type="number" placeholder="SES">
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input formControlName="nome" matInput type="text" required maxlength="255" placeholder="Nome">
+    <input formControlName="nome" matInput type="text" placeholder="Nome">
   </mat-form-field>
   <div style="padding-bottom: 10px">
     <label>Sexo </label>
-    <mat-radio-group [(value)]="paciente.sexo">
+    <mat-radio-group formControlName="sexo">
       <mat-radio-button value="f" style="padding-left: 10px">Feminino</mat-radio-button>
       <mat-radio-button value="m" style="padding-left: 10px">Masculino</mat-radio-button>
     </mat-radio-group>

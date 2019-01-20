@@ -1,0 +1,2 @@
+Enviar extrado de triagem via sms.
+Desenvolver app para o paciente com formulário de triagem e recebimento de extrado pelo app.
