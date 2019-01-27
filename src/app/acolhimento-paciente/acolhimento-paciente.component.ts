@@ -45,7 +45,9 @@ export class AcolhimentoPacienteComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.cadastrarNovo = result;
-      this.router.navigate([`paciente`]);
+      if (this.cadastrarNovo) {
+        this.router.navigate([`paciente`]);
+      }
     });
   }
 }

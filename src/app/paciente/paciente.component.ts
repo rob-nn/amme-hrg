@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { PacienteService } from '../paciente.service';
 import { Paciente } from '../entity/paciente';
@@ -21,7 +21,8 @@ export class PacienteComponent implements OnInit {
   constructor(
     private route : ActivatedRoute,
     private pacienteService: PacienteService,
-    private fb: FormBuilder) { 
+    private fb: FormBuilder,
+    private router: Router) { 
       this.pacienteFormGroup = this.fb.group({
         id: [''],
         ses: ['', [Validators.required, Validators.max(999999999999)]],
@@ -30,13 +31,13 @@ export class PacienteComponent implements OnInit {
         dataNascimento: ['', [Validators.required]],
         estadoCivil: ['', [Validators.required]],
         nacionalidade: ['', [Validators.required]],
-        endereco: ['', [Validators.required]],
-        telefoneCelularPessoal: ['', [Validators.required]],
-        telefoneCelularContato: ['', [Validators.required]],
-        telefoneFixo: ['', [Validators.required]],
-        profissao: ['', [Validators.required]],
-        nomePai: [''],
-        nomeMae: [''],
+        endereco: ['', [Validators.required, Validators.maxLength(500)]],
+        telefoneCelularPessoal: ['', [Validators.required, Validators.maxLength(13)]],
+        telefoneCelularContato: ['', [Validators.required, Validators.maxLength(13)]],
+        telefoneFixo: ['', [Validators.maxLength(13)]],
+        profissao: ['', [Validators.required, Validators.maxLength(255)]],
+        nomePai: ['', [Validators.maxLength(255)]],
+        nomeMae: ['', [Validators.maxLength(255)]],
         orfao: [''],
         timestamp: ['']
       })
@@ -50,6 +51,7 @@ export class PacienteComponent implements OnInit {
         paciente => { 
           this.paciente = paciente
           this.pacienteFormGroup.setValue(paciente);
+          this.pacienteFormGroup.get('ses').disable();
         }
       )
     }
@@ -73,9 +75,9 @@ export class PacienteComponent implements OnInit {
       this.pacienteService.updatePaciente(this.paciente).subscribe (
         _ => {
           alert(`Paciente atualizado com sucesso`);
+          this.router.navigate([`triagem/${this.paciente.id}`]);
         }
       )
     }
   }
-
 }

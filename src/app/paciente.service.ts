@@ -32,7 +32,6 @@ export class PacienteService {
   
   addPaciente(paciente: Paciente): Observable<Paciente> {
     paciente.timestamp = new Date();
-    paciente.numeroPassagem= Math.random() * 1000;
     return this.http.post<Paciente>(this.baseUrl, paciente, httpOptions).pipe(
       catchError(this.handleError<Paciente>('addPaciente'))
     );

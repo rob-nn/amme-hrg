@@ -5,7 +5,12 @@
 <mat-sidenav-container style="height: 100%;">
   <mat-sidenav #sidenav style="width:25%" mode="side">
     <mat-list>
-      <mat-list-item><a routerLink="/acolhimentoPaciente" (click)="sidenav.toggle()">Acolhimento do Paciente</a></mat-list-item>
+      <mat-list-item>
+        <a routerLink="/acolhimentoPaciente" >Consulta de Triagem</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a routerLink="/consultaAcolhimento">Consulta de Acolhimento</a>
+      </mat-list-item>
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>

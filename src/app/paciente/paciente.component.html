@@ -1,7 +1,8 @@
 <mat-toolbar>
-  <span  style="text-align: center; width: 100%;">Acolhimento de Paciente - Dados Demográficos {{ acao }}</span>
+  <span  style="text-align: center; width: 100%;">Consulta de Triangem - Cadastro Paciente {{ acao }}</span>
 </mat-toolbar>
 <h1>Valid: {{pacienteFormGroup.valid}}</h1>
+<h1>Valid: {{pacienteFormGroup.errors}}</h1>
 <form [formGroup]="pacienteFormGroup">
   <mat-form-field>
     <input formControlName="ses" matInput type="number" placeholder="SES">
@@ -18,13 +19,14 @@
     </mat-radio-group>
   </div>
   <mat-form-field>
-    <input matInput [matDatepicker]="dataNascimentoPicker" required placeholder="Data de Nascimento" [(value)]="paciente.dataNascimento">
+    <input matInput [matDatepicker]="dataNascimentoPicker" placeholder="Data de Nascimento" 
+      formControlName="dataNascimento">
     <mat-datepicker-toggle matSuffix [for]="dataNascimentoPicker"></mat-datepicker-toggle>
     <mat-datepicker #dataNascimentoPicker ></mat-datepicker>
   </mat-form-field>
   <div style="padding-bottom: 10px">
     <label>Estado Civil </label>
-    <mat-radio-group [(value)]="paciente.estadoCivil">
+    <mat-radio-group formControlName="estadoCivil">
       <mat-radio-button value="0" style="padding-left: 10px">Casado</mat-radio-button>
       <mat-radio-button value="1" style="padding-left: 10px">Divorciado</mat-radio-button>
       <mat-radio-button value="2" style="padding-left: 10px">Separado</mat-radio-button>
@@ -35,49 +37,46 @@
   </div>
    <div style="padding-bottom: 10px">
     <label>Nacionalidade </label>
-    <mat-radio-group [(value)]="paciente.nacionalidade">
+    <mat-radio-group formControlName="nacionalidade">
       <mat-radio-button value="0" style="padding-left: 10px">Brasileira</mat-radio-button>
       <mat-radio-button value="1" style="padding-left: 10px">Estrangeira</mat-radio-button>
       <mat-radio-button value="2" style="padding-left: 10px">Naturalizado</mat-radio-button>
     </mat-radio-group>
   </div>
   <mat-form-field>
-    <input [(value)]="paciente.endereco" required matInput type="text" maxlength="500" placeholder="Nome">
+    <textarea formControlName="endereco" matInput  rows="4" cols="50" placeholder="Endereço"></textarea>
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input [(value)]="paciente.telefoneCelularPessoal" matInput type="tel" maxlength="13" placeholder="Telefone Celular Pessoal" required>
+    <input formControlName="telefoneCelularPessoal" matInput type="tel"  placeholder="Telefone Celular Pessoal" required>
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input [(value)]="paciente.telefoneCelularContato" matInput type="tel" maxlength="13" placeholder="Telefone Celular Contato" required>
+    <input formControlName="telefoneCelularContato" matInput type="tel"  placeholder="Telefone Celular Contato" required>
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input [(value)]="paciente.telefoneFixo" matInput type="tel" maxlength="13" placeholder="Telefone Fixo" >
+    <input formControlName="telefoneFixo" matInput type="tel" placeholder="Telefone Fixo" >
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input [(value)]="paciente.profissao" required matInput type="text" maxlength="250" placeholder="Profissão">
+    <input  formControlName="profissao" matInput type="text" placeholder="Profissão">
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input [(value)]="paciente.nomePai" required matInput type="text" maxlength="250" placeholder="Nome Pai">
+    <input formControlName="nomePai" matInput type="text" placeholder="Nome Pai">
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input [(value)]="paciente.nomeMae" required matInput type="text" maxlength="250" placeholder="Nome Mãe">
+    <input formControlName="nomeMae" matInput type="text" maxlength="250" placeholder="Nome Mãe">
   </mat-form-field>
   <br>
-  <mat-checkbox [(value)]="paciente.orfao">Órfão</mat-checkbox>
+  <mat-checkbox formControlName="orfao">Órfão</mat-checkbox>
   <br>
   <mat-form-field>
-    <input matInput type="datetime" placeholder="Data Última Atualização" readonly [(value)]="paciente.timestamp">
+    <input matInput type="datetime" placeholder="Data Última Atualização" readonly 
+      formControlName="timestamp">
     <mat-datepicker #timestampPicker ></mat-datepicker>
-  </mat-form-field>
-  <br>
-  <mat-form-field>
-    <input [(value)]="paciente.numeroPassagem" readonly matInput type="number" maxlength="20" placeholder="numeroPassagem">
   </mat-form-field>
   <br>
   <button mat-button (click)="salvar()"><mat-icon style="font-size: 50px">save</mat-icon></button>

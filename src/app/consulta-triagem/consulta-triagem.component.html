@@ -1,0 +1,53 @@
+<mat-toolbar>
+  <span  style="text-align: center; width: 100%;">Consulta de Triangem  - Triagem</span>
+</mat-toolbar>
+<mat-card>
+  <mat-card-title>Paciente</mat-card-title>
+  <mat-grid-list cols="3"rowHeight="50">
+    <mat-grid-tile
+        [colspan]="1"
+        [rowspan]="1">
+        Nome: {{ paciente?.nome }} 
+    </mat-grid-tile>
+      <mat-grid-tile
+        [colspan]="1"
+        [rowspan]="1">
+        Sexo: {{ paciente?.sexo === 'f' ? 'Feminino': 'Maculino' }}
+    </mat-grid-tile>
+      <mat-grid-tile
+        [colspan]="1"
+        [rowspan]="1">
+        Data de Nascimento: {{ paciente?.dataNascimento | date: 'dd/MM/yyyy'}}
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
+<mat-card>
+  <mat-card-title>Responda as Perguntas</mat-card-title>
+  <mat-form-field style="width:90%">
+    <input  matInput type="text" placeholder="Quais cirurgia(s)/procedimento(s) você irá fazer:">
+  </mat-form-field>
+</mat-card>
+<mat-card>
+  <mat-card-title>Responda as Questões Abaixo Marcando um "X"</mat-card-title>
+    <table style="width:95%">
+      <tr>
+        <th style="width:60%">Pergunta</th>
+        <th style="width:20%">Não</th>
+        <th style="width:20%">Sim</th>
+      </tr>
+      <tr *ngFor="let pergunta of paciente?.triagem">
+        <td>{{pergunta.pergunta}}</td>
+        <td>
+          <mat-radio-button value="false" style="padding-left: 10px"></mat-radio-button>
+        </td>
+        <td>
+          <mat-radio-button value="true" style="padding-left: 10px"></mat-radio-button>
+        </td>
+      </tr>
+    </table>
+    <div style="padding-bottom: 10px; padding-top: 20px;">
+      <mat-checkbox #checaVeracidade >Paciente declarou verbalmente que as informaçõe são verdadeiras</mat-checkbox>
+    </div>
+  </mat-card>
+
+  <button mat-button (click)="salvar()" ><mat-icon style="font-size: 50px">done</mat-icon></button>
