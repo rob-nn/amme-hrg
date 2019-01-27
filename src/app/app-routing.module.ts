@@ -5,6 +5,7 @@ import { AcolhimentoPacienteComponent } from './acolhimento-paciente/acolhimento
 import { SplashComponent } from './splash/splash.component';
 import { PacienteComponent } from './paciente/paciente.component';
 import { ConsultaTriagemComponent } from './consulta-triagem/consulta-triagem.component';
+import { ConsultaAcolhimentoComponent } from './consulta-acolhimento/consulta-acolhimento.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/splash', pathMatch: 'full' },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'acolhimentoPaciente', component: AcolhimentoPacienteComponent },
   { path: 'paciente/:id', component: PacienteComponent },
   { path: 'paciente', component: PacienteComponent },
-  { path: 'triagem/:pacienteId', component: ConsultaTriagemComponent}
+  { path: 'triagem/:pacienteId', component: ConsultaTriagemComponent},
+  { path: 'consultaAcolhimento', component: ConsultaAcolhimentoComponent}
 ];
 
 @NgModule({

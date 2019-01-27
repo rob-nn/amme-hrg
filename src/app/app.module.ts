@@ -15,6 +15,7 @@ import { SplashComponent } from './splash/splash.component';
 import { AcolhimentoPacienteComponent, DialogCadastrarNovoPaciente } from './acolhimento-paciente/acolhimento-paciente.component';
 import { PacienteComponent } from './paciente/paciente.component';
 import { ConsultaTriagemComponent } from './consulta-triagem/consulta-triagem.component';
+import { ConsultaAcolhimentoComponent } from './consulta-acolhimento/consulta-acolhimento.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ConsultaTriagemComponent } from './consulta-triagem/consulta-triagem.co
     DialogCadastrarNovoPaciente,
     PacienteComponent,
     ConsultaTriagemComponent,
+    ConsultaAcolhimentoComponent,
   ],
   entryComponents: [AcolhimentoPacienteComponent, DialogCadastrarNovoPaciente],
   imports: [
